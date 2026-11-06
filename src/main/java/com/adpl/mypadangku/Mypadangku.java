@@ -1,16 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+package main;
 
-package com.adpl.mypadangku;
+import javax.swing.SwingUtilities;
 
-/**
- *
- * @author hugom
- */
+import controller.BahanBakuController;
+import repository.BahanBakuRepository;
+import repository.Database;
+import repository.InMemoryBahanBakuRepository;
+import repository.JdbcBahanBakuRepository;
+import service.BahanBakuService;
+import service.PemantauStokService;
+import view.BahanBakuView;
+
 public class Mypadangku {
-
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        boolean pakaiMemori = args.length > 0 && args[0].equals("--memory");
+
+        BahanBakuRepository repository = pakaiMemori
+                ? new InMemoryBahanBakuRepository()
+                : new JdbcBahanBakuRepository(new Database());
+
+        BahanBakuService service = new BahanBakuService(repository);
+        PemantauStokService pemantau = new PemantauStokService(repository);
+
+        SwingUtilities.invokeLater(() -> {
+            BahanBakuView view = new BahanBakuView();
+            new BahanBakuController(service, pemantau, view);
+            view.setVisible(true);
+        });
     }
 }
