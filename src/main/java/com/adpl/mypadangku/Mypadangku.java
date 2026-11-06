@@ -23,9 +23,9 @@ public class Mypadangku {
         PemantauStockService pemantau = new PemantauStockService(repository);
 
         SwingUtilities.invokeLater(() -> {
-            BahanBakuView view = new BahanBakuView();
-            new BahanBakuController(service, pemantau, view);
-            view.setVisible(true);
+                BahanBakuView view = new BahanBakuView();
+                new BahanBakuController(service, pemantau, view);
+                view.setVisible(true);
         });
     }
 }
