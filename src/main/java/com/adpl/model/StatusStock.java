@@ -1,4 +1,4 @@
-package model;
+package com.adpl.model;
 
 public enum StatusStock {
     AMAN("Aman"),

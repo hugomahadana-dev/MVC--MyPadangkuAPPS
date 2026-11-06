@@ -1,15 +1,15 @@
-package main;
+package com.adpl.mypadangku;
 
 import javax.swing.SwingUtilities;
 
-import controller.BahanBakuController;
-import repository.BahanBakuRepository;
-import repository.Database;
-import repository.InMemoryBahanBakuRepository;
-import repository.JdbcBahanBakuRepository;
-import service.BahanBakuService;
-import service.PemantauStokService;
-import view.BahanBakuView;
+import com.adpl.controller.BahanBakuController;
+import com.adpl.repository.BahanBakuRepository;
+import com.adpl.repository.Database;
+import com.adpl.repository.InMemoryBahanBakuRepository;
+import com.adpl.repository.JdbcBahanBakuRepository;
+import com.adpl.service.BahanBakuService;
+import com.adpl.service.PemantauStockService;
+import com.adpl.view.BahanBakuView;
 
 public class Mypadangku {
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class Mypadangku {
                 : new JdbcBahanBakuRepository(new Database());
 
         BahanBakuService service = new BahanBakuService(repository);
-        PemantauStokService pemantau = new PemantauStokService(repository);
+        PemantauStockService pemantau = new PemantauStockService(repository);
 
         SwingUtilities.invokeLater(() -> {
             BahanBakuView view = new BahanBakuView();

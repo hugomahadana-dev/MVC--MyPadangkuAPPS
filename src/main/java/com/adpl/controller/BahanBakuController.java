@@ -1,20 +1,16 @@
-package controller;
+package com.adpl.controller;
 
-import repository.RepositoryException;
-import service.BahanBakuService;
-import service.PemantauStokService;
-import view.BahanBakuView;
+import com.adpl.repository.RepositoryException;
+import com.adpl.service.BahanBakuService;
+import com.adpl.service.PemantauStockService;
+import com.adpl.view.BahanBakuView;
 
-/**
- * Penghubung View dan Service: menangkap aksi pengguna, mengubah input teks menjadi angka,
- * memanggil service, lalu memperbarui tampilan. Tidak berisi SQL maupun aturan bisnis.
- */
 public class BahanBakuController {
     private final BahanBakuService service;
-    private final PemantauStokService pemantau;
+    private final PemantauStockService pemantau;
     private final BahanBakuView view;
 
-    public BahanBakuController(BahanBakuService service, PemantauStokService pemantau, BahanBakuView view) {
+    public BahanBakuController(BahanBakuService service, PemantauStockService pemantau, BahanBakuView view) {
         this.service = service;
         this.pemantau = pemantau;
         this.view = view;
@@ -58,7 +54,6 @@ public class BahanBakuController {
         view.tampilkanRingkasanKritis(pemantau.ambilStokKritis().size());
     }
 
-    /** Satu tempat untuk menangani error, supaya setiap aksi tidak mengulang try-catch. */
     private void jalankan(Runnable aksi) {
         try {
             aksi.run();
@@ -78,7 +73,6 @@ public class BahanBakuController {
         return id;
     }
 
-    /** Mengubah teks input menjadi angka; menerima koma maupun titik sebagai pemisah desimal. */
     private double parseAngka(String teks, String namaField) {
         try {
             return Double.parseDouble(teks.trim().replace(',', '.'));

@@ -1,9 +1,9 @@
-package service;
+package com.adpl.service;
 
 import java.util.List;
 
-import model.BahanBaku;
-import repository.BahanBakuRepository;
+import com.adpl.model.BahanBaku;
+import com.adpl.repository.BahanBakuRepository;
 
 public class BahanBakuService {
     private static final String PREFIX_ID = "BHN";

@@ -1,9 +1,9 @@
-package repository;
+package com.adpl.repository;
 
 import java.util.List;
 import java.util.Optional;
 
-import model.BahanBaku;
+import com.adpl.model.BahanBaku;
 
 public interface BahanBakuReader {
 

@@ -1,4 +1,4 @@
-package model;
+package com.adpl.model;
 
 public class BahanBaku {
     private final String id;
@@ -27,7 +27,7 @@ public class BahanBaku {
         return satuan;
     }
 
-    public double getStok() {
+    public double getStock() {
         return stok;
     }
 
@@ -35,13 +35,13 @@ public class BahanBaku {
         return stokMinimum;
     }
 
-    public StatusStok getStatus() {
+    public StatusStock getStatus() {
         if (stok <= 0) {
-            return StatusStok.HABIS;
+            return StatusStock.HABIS;
         }
         if (stok <= stokMinimum) {
-            return StatusStok.KRITIS;
+            return StatusStock.KRITIS;
         }
-        return StatusStok.AMAN;
+        return StatusStock.AMAN;
     }
 }

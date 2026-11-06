@@ -1,6 +1,6 @@
-package repository;
+package com.adpl.repository;
 
-import model.BahanBaku;
+import com.adpl.model.BahanBaku;
 
 public interface BahanBakuWriter {
 

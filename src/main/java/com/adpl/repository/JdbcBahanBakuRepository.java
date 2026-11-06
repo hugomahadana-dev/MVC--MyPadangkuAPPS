@@ -1,4 +1,4 @@
-package repository;
+package com.adpl.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import model.BahanBaku;
+import com.adpl.model.BahanBaku;
 
-/** Implementasi BahanBakuRepository dengan JDBC + MySQL. Hanya berisi SQL dan pemetaan data. */
 public class JdbcBahanBakuRepository implements BahanBakuRepository {
     private static final String KOLOM = "id_bahan, nama, satuan, stok, stok_minimum";
 
@@ -54,7 +53,7 @@ public class JdbcBahanBakuRepository implements BahanBakuRepository {
     public void save(BahanBaku b) {
         eksekusi("INSERT INTO bahan_baku (" + KOLOM + ") VALUES (?, ?, ?, ?, ?)",
                 "Gagal menyimpan bahan baku",
-                b.getId(), b.getNama(), b.getSatuan(), b.getStok(), b.getStokMinimum());
+                b.getId(), b.getNama(), b.getSatuan(), b.getStock(), b.getStokMinimum());
     }
 
     @Override
@@ -62,7 +61,7 @@ public class JdbcBahanBakuRepository implements BahanBakuRepository {
         int baris = eksekusi(
                 "UPDATE bahan_baku SET nama = ?, satuan = ?, stok = ?, stok_minimum = ? WHERE id_bahan = ?",
                 "Gagal mengubah bahan baku",
-                b.getNama(), b.getSatuan(), b.getStok(), b.getStokMinimum(), b.getId());
+                b.getNama(), b.getSatuan(), b.getStock(), b.getStokMinimum(), b.getId());
         pastikanAdaYangTerpengaruh(baris, b.getId());
     }
 
@@ -73,7 +72,6 @@ public class JdbcBahanBakuRepository implements BahanBakuRepository {
         pastikanAdaYangTerpengaruh(baris, id);
     }
 
-    /** Menjalankan INSERT/UPDATE/DELETE dengan PreparedStatement (aman dari SQL injection). */
     private int eksekusi(String sql, String pesanGagal, Object... parameter) {
         try (Connection conn = database.getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql)) {

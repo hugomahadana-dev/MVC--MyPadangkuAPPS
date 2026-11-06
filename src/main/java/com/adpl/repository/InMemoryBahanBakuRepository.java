@@ -1,4 +1,4 @@
-package repository;
+package com.adpl.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 
-import model.BahanBaku;
+import com.adpl.model.BahanBaku;
 
 public class InMemoryBahanBakuRepository implements BahanBakuRepository {
     // TreeMap menjaga urutan berdasarkan ID, sama seperti ORDER BY id_bahan pada versi JDBC.

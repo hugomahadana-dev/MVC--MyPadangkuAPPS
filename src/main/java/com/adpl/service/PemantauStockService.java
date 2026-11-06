@@ -1,11 +1,11 @@
-package service;
+package com.adpl.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import model.BahanBaku;
-import model.StatusStock;
-import repository.BahanBakuReader;
+import com.adpl.model.BahanBaku;
+import com.adpl.model.StatusStock;
+import com.adpl.repository.BahanBakuReader;
 
 public class PemantauStockService {
     private final BahanBakuReader reader;
